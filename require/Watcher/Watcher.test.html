@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script type="text/javascript" src="../../lib/jQuery/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="Watcher.js"></script>
+<body>
+
+</body>
+<script>
+    var watcher = null;
+    window.$(function() {
+        watcher = new Watcher();
+        watcher.init();
+        watcher.depend('token', function() {
+            return window.sessionStorage.getItem('token');
+        }, function(newValue) {
+            window.sessionStorage.setItem('token', newValue);
+        });
+        watcher.depend('count', function() {
+            return window.sessionStorage.getItem('count');
+        }, function(newValue) {
+            window.sessionStorage.setItem('count', newValue);
+        });
+        watcher.depend('role', function() {
+            return window.sessionStorage.getItem('role');
+        }, function(newValue) {
+            window.sessionStorage.setItem('role', newValue);
+        });
+        var function0 = function() {
+            return window.sessionStorage.getItem('token');
+        };
+        var function1 = function() {
+            return window.sessionStorage.getItem('count') + window.sessionStorage.getItem('token');
+        };
+        watcher.watch(function0, ['token'], function() {
+            console.log('function0的值被改变了');
+        });
+        watcher.watch(function1, ['count', 'role'], function() {
+            console.log('function1的值被改变了');
+        });
+    });
+</script>
+</html>

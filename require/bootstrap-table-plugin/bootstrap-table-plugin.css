@@ -1,0 +1,112 @@
+.bootstrap-table {
+    overflow: auto;
+}
+
+.bootstrap-table tbody tr {
+    cursor: pointer;
+}
+
+.bootstrap-table .operation .play,
+.bootstrap-table .operation .edit,
+.bootstrap-table .operation .detail,
+.bootstrap-table .operation .live {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+}
+
+.bootstrap-table .operation .play:hover,
+.bootstrap-table .operation .edit:hover,
+.bootstrap-table .operation .detail:hover,
+.bootstrap-table .operation .live:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.bootstrap-table .operation i {
+    font-size: 20px !important;
+    line-height: 30px;
+    margin: 0 !important;
+}
+
+.bootstrap-table td {
+    max-width: 100px;
+}
+
+@media (min-width: 576px) {
+    .bootstrap-table td {
+        max-width: 150px;
+    }
+}
+
+@media (min-width: 768px) {
+    .bootstrap-table td {
+        max-width: 200px;
+    }
+}
+
+@media (min-width: 992px) {
+    .bootstrap-table td {
+        max-width: 250px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .bootstrap-table td {
+        max-width: 350px;
+    }
+}
+
+.bootstrap-table td {
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+}
+
+.bootstrap-table .btn-secondary{
+    color: #6c757d !important;
+    border: 1px solid #6c757d !important;
+    background-color: #fff !important;
+}
+
+.bootstrap-table .btn-secondary[aria-expanded="false"]{
+    color: #6c757d !important;
+    border: 1px solid #6c757d !important;
+    background-color: #fff !important;
+}
+
+.bootstrap-table .btn-secondary[aria-expanded="true"]{
+    color: #fff !important;
+    border: 1px solid #6c757d !important;
+    background-color: #6c757d !important;
+}
+
+.bootstrap-table .dropdown-item.active,
+.bootstrap-table .dropdown-item:active {
+    color: #292929;
+    text-decoration: none;
+    background-color: #c9c9c9;
+}
+
+.bootstrap-table .dropdown-menu > span > a:hover {
+    background-color: #dbdbdb;
+}
+
+.bootstrap-table .page-item.active .page-link {
+    z-index: 1;
+    color: #dbdbdb;
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+.bootstrap-table .page-link {
+    color: #6c757d;
+}
+
+.bootstrap-table .fixed-table-container .fixed-table-body .fixed-table-loading {
+    opacity: 0;
+}
+
+.table-responsive {
+    display: table;
+}

@@ -1,0 +1,12 @@
+.list-group-item:first-child {
+    border-radius: 0;
+}
+
+.list-group-item:last-child {
+    border-radius: 0;
+}
+
+.list-group-item {
+    border-right: 0;
+    border-left: 0;
+}

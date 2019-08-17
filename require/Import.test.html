@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script type="text/javascript" src="Import.js"></script>
+<body>
+
+</body>
+<script>
+    let i = new Import('../require');
+    i.init();
+    i.configArray([{
+        module: 'EventUtil',
+        path: '/Event/EventUtil.js',
+    }, {
+        module: 'Router',
+        path: '/Router/Router.js',
+    }]);
+    i.import('EventUtil');
+    i.import('Router');
+</script>
+</html>

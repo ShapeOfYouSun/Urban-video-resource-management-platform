@@ -1,0 +1,8 @@
+.treeview {
+    max-height: 790px;
+    overflow: auto;
+}
+
+.treeview .list-group-item:first-child {
+    border-top: 0;
+}

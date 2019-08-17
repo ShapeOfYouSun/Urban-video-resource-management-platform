@@ -1,0 +1,23 @@
+.modal-dialog {
+    max-width: 600px;
+    margin: 1.75rem auto;
+}
+
+.modal .modal-dialog .modal-content {
+    border: none;
+}
+
+.modal .modal-header {
+    background-color: rgb(52, 58, 64);
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.modal .modal-header span {
+    color: #fff;
+}
+
+.modal button {
+    min-width: 90px;
+}

@@ -1,0 +1,45 @@
+fieldset > .row > legend {
+    font-weight: 900;
+    font-size: 1.3rem;
+}
+
+fieldset > .row > dl {
+    height: 38px;
+}
+
+fieldset > .row > dl > .row {
+    height: 100%;
+}
+
+fieldset > .row > dl > .row > dt {
+    font-weight: 700;
+    text-align: right;
+    height: 100%;
+    line-height: 38px;
+}
+
+fieldset > .row > dl > .row > dt > label {
+    width: 100%;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+}
+
+fieldset > .row > dl > .row > dd {
+    line-height: 38px;
+    height: 100%;
+}
+
+fieldset > .row > dl > .row > dd > span {
+    display: inline-block;
+    width: 100%;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+}
+
+fieldset hr {
+    margin: 0;
+    margin-bottom: 20px;
+    width: 100%;
+}

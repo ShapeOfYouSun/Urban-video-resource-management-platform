@@ -1,0 +1,39 @@
+.dark {
+    background: rgba(0,0,0,0.1);
+    color: rgba(0,0,0,9);
+    border-radius: 4px;
+    padding: 5px;
+    font-size: 90%;
+}
+
+.blue {
+    background: rgba(7, 97, 183, 0.1);
+    color: rgba(7, 97, 183, 0.9);
+    border-radius: 4px;
+    padding: 5px;
+    font-size: 90%;
+}
+
+.green {
+    background: rgba(0,128,0,0.1);
+    color: rgba(0,128,0,0.9);
+    border-radius: 4px;
+    padding: 5px;
+    font-size: 90%;
+}
+
+.orange {
+    background: rgba(227,167,6,0.1);
+    color: rgba(227,167,6,1);
+    border-radius: 4px;
+    padding: 5px;
+    font-size: 90%;
+}
+
+.red {
+    background: rgba(247,9,9,0.1);
+    color: rgba(247,9,9,0.9);
+    border-radius: 4px;
+    padding: 5px;
+    font-size: 90%;
+}

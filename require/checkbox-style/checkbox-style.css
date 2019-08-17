@@ -1,0 +1,51 @@
+.bootstrap-table label input {
+    opacity: 0;
+    height: 16px;
+    width: 16px;
+    position: relative;
+    top: 8px;
+    left: 8px;
+    z-index: 10;
+    cursor: pointer;
+}
+
+.bootstrap-table thead label input {
+    left: 6px;
+}
+
+.bootstrap-table label span {
+    display:inline-block;
+    width: 16px;
+    height: 16px;
+    border: 1px solid rgba(0,0,0,0.15);
+    position: relative;
+    top: 8px;
+    left: -13px;
+    cursor: pointer;
+}
+
+.bootstrap-table thead label span {
+    position: relative;
+    width: 16px;
+    height: 16px;
+    top: 8px;
+    left: -11px;
+}
+
+.bootstrap-table label input[type="checkbox"]:checked+span {
+    background-color: #c2c2c2;
+}
+
+.bootstrap-table label input[type="checkbox"]:checked+span:after {
+    content: '\00a0';
+    display: inline-block;
+    border: 2px solid #495057;;
+    border-top-width: 0;
+    border-right-width: 0;
+    width: 14px;
+    height: 8px;
+    -webkit-transform: rotate(-50deg);
+    position: absolute;
+    top:1px;
+    left:0px;
+}

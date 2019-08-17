@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Router.test</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript" src="../Event/EventUtil.js"></script>
+<script type="text/javascript" src="Router.js"></script>
+<script>
+let router = new Router(null);
+console.log('router', router);
+router.init();
+router.routeArray([{
+    path: '', callback: function() {
+        document.getElementsByTagName('body').item(0).innerHTML = '<p>current hash path is ""</p>';
+    }
+}, {
+    path: 'login', callback: function() {
+        document.getElementsByTagName('body').item(0).innerHTML = '<p>current hash path is "login"</p>';
+    }
+}, {
+    path: 'fileManage', callback: function() {
+        document.getElementsByTagName('body').item(0).innerHTML = '<p>current hash path is "fileManage"</p>'
+    }
+}]);
+</script>
+</html>

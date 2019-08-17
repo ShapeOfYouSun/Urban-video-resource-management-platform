@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script type="text/javascript" src="../../lib/jQuery/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="../Watcher/Watcher.js"></script>
+<script type="text/javascript" src="Chip.js"></script>
+<body>
+
+</body>
+<script>
+    var chip = null, watcher = null;
+    window.$(function() {
+        watcher = new Watcher();
+        watcher.depend('token', function() {
+            return window.sessionStorage.getItem('token');
+        }, function(newValue) {
+            window.sessionStorage.setItem('token', newValue);
+        });
+        chip = new Chip('chip0', {
+            template: '<section>' +
+            '<input type="button" c-bind="value:btnValue|click:btnClick"/>' +
+            '<input type="text" c-bind="value:textValue"/>' +
+            '<span c-bind="if:show|text:txt"></span>' +
+            '</section>',
+            beforeCreate: function() { console.log('⚡ before create hook ~'); return true; },
+            beforeMount: function() { console.log('⚡ before mount hook ~'); return true; },
+            beforeRemove: function() { console.log('⚡ before remove hook ~'); return true; },
+            beforeDestroy: function() { console.log('⚡ before destroy hook ~'); return true; },
+            data: {
+                btnValue: '这是一个按钮',
+                btnClick: function(event) {
+                    console.log('event', event);
+                    console.log('What the fuck click me!');
+                },
+                textValue: '这是一段文本',
+                show: function() {
+                    return window.sessionStorage.getItem('token') === 'shit';
+                },
+                txt: '这是一段span文本'
+            },
+            watcher: watcher,
+        });
+        chip.init();
+    });
+</script>
+</html>

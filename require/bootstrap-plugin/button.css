@@ -1,0 +1,15 @@
+button {
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow: ellipsis;
+}
+
+.btn-primary {
+    background-color: #185598 !important;
+    color: rgba(255, 255, 255,0.8);
+}
+
+
+.btn-outline-secondary {
+    height: 2.375rem;
+}
