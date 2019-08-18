@@ -1,0 +1,15 @@
+{
+  "status": 0,
+  "data": {
+    "equipments": [{
+      "equipmentId": "00111",
+      "equipmentName": "设备1号"
+    }, {
+      "equipmentId": "00112",
+      "equipmentName": "设备2号"
+    }, {
+      "equipmentId": "00113",
+      "equipmentName": "设备3号"
+    }]
+  }
+}

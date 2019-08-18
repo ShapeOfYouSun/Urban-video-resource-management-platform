@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<link type="text/css" rel="stylesheet" href="component/login/login.css"/>
+<body>
+<section class="login-wrapper" id="login-container">
+    <img id="login-main-logo" src="static/image/bg_pic.png"/>
+    <div id="login-main-content">
+        <form>
+            <div id="login-form-title">登陆</div>
+            <div id="login-username">
+                <div class="icon-container"><i class="fas fa-mobile-alt"></i></div>
+                <input type="text" id="input-username" placeholder="请输入登陆账号..." required autocomplete="off">
+                <div class="invalid-feedback">登陆账号不能为空!</div>
+            </div>
+            <div id="login-password">
+                <div class="icon-container"><i class="fas fa-unlock-alt"></i></div>
+                <input type="password" id="input-password" placeholder="请输入登陆密码..." required autocomplete="off">
+                <div id="password-viewer" class="icon-container"><i class="fas fa-eye-slash"></i></div>
+                <div class="invalid-feedback">登陆密码不能为空!</div>
+            </div>
+            <button class="btn btn-primary" type="submit">登录</button>
+        </form>
+    </div>
+</section>
+</body>
+<script type="text/javascript" src="component/login/login.js"></script>
+</html>

@@ -1,0 +1,10 @@
+{
+  "status": 0,
+  "data": {
+    "equipments": [
+      {"id": "001", "location": "设备001"},
+      {"id": "002", "location": "设备002"},
+      {"id": "003", "location": "设备003"}
+    ]
+  }
+}

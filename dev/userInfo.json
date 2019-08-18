@@ -1,0 +1,35 @@
+{
+  "status": 0,
+  "data": {
+    "userInfo": {
+      "accountId": "0L4FYX7V6KI2EIJIXO9D9AD1CB5MZJJP",
+      "userName": "user1",
+      "accountCode": "109874",
+      "name": "张三",
+      "sex": 0,
+      "idType": 0,
+      "idNo": "120122122222222221",
+      "role": "运营人员",
+      "orgId": "LA4M1JGMHHP5ZLI5O1QONMNOXKTOL3SS",
+      "mobilephone": "13920794853",
+      "phone": "",
+      "province":" ",
+      "city":"天津市",
+      "region":"津南区",
+      "address":"天津市 津南区 八里台工业园区",
+      "industryId": "视频管理",
+      "departmentId": "QWEASDXZC32QEFS",
+      "departmentName": "朝阳区水务",
+      "industryId": "ASDIWNL230ASDL",
+      "industryName": "水务",
+      "equipmentId": "00113",
+      "location": "津南区公安局西南角-上",
+      "format": "mp4",
+      "recordTime": "2019-07-20 12:00:04",
+      "resource": "2",
+      "size": "235.2",
+      "videoLength": 450,
+      "status": "1"
+    }
+  }
+}

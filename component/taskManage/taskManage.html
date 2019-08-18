@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>任务管理</title>
+</head>
+<link type="text/css" rel="stylesheet" href="component/taskManage/taskManage.css"/>
+<body>
+
+<section class="taskManage-wrapper container-fluid mr-auto ml-auto" id="taskManage-container">
+    <div class="row">
+        <div id="task-manage-tool" class="col-12"> <!-- 工具栏: 查询、添加任务 -->
+            <div class="row mr-auto ml-auto">
+                <div class="input-group mb-3 mt-3 col-8 col-lg-5" id="task-search-container">
+                    <input type="text" class="form-control" placeholder="请输入任务名称..." aria-label="fuzzy-search"/>
+                    <div class="input-group-append"><button class="btn btn-outline-secondary"><i class="fas fa-search"></i>点击检索</button></div>
+                </div> <!-- 任务管理通用检索框 -->
+                <div class="btn-group mb-3 mt-3 col-4 col-lg-2" role="group" id="task-advanced-search-container">
+                    <button type="button" class="btn btn-outline-secondary"><i class="fab fa-searchengin"></i>高级检索</button>
+                </div> <!-- 任务管理高级检索 -->
+                <div class="btn-group mb-3 mt-3 col-4 col-lg-3" role="group" id="task-operation-container">
+                    <button type="button" class="btn btn-outline-secondary" id="task-start" disabled>开启</button>
+                    <button type="button" class="btn btn-outline-secondary" id="task-stop" disabled>暂停</button>
+                    <button type="button" class="btn btn-outline-secondary" id="task-delete" disabled>删除</button>
+                </div> <!-- 批量操作: 开启、暂停、删除 -->
+                <div class="btn-group mb-3 mt-3 col-4 col-lg-2" role="group" id="task-add">
+                    <button type="button" class="btn btn-outline-secondary"><i class="fas fa-plus-circle"></i>新建任务
+                    </button>
+                </div> <!-- 新建任务 -->
+            </div>
+        </div>
+        <div id="task-table" class="col-12 mr-auto ml-auto"></div> <!-- 任务表格 -->
+    </div>
+</section>
+
+</body>
+<script type="text/javascript" src="component/taskManage/taskManage.js"></script>
+</html>

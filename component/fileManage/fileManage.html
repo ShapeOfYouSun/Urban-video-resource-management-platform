@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>视频文件管理</title>
+</head>
+<link type="text/css" rel="stylesheet" href="component/fileManage/fileManage.css"/>
+<body>
+
+<section class="fileManage-wrapper container-fluid" id="fileManage-container">
+    <div class="row">
+        <div class="left-container col-12 col-sm-2"> <!-- 左侧行业-单位树形结构 -->
+            <div class="row">
+                <div class="organization-search col-12 mb-2 mt-3">
+                    <input type="search" class="form-control" title="fuzzyValue" placeholder="请输入关键词检索..."/>
+                </div>
+                <div class="organization-by-industry col-12"></div>
+            </div>
+        </div>
+        <div class="right-container col-12 col-sm-10">
+            <div class="row">
+                <div class="tools col-12"> <!-- 工具栏: 检索, 取回 -->
+                    <div class="row">
+                        <div class="input-group mb-2 col-10 mt-3" id="file-search-container"> <!-- 通用检索框 -->
+                            <input type="text" class="form-control" placeholder="请输入视频文件名称..."
+                                   aria-label="fuzzy-search"/>
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="button"><i class="fas fa-search"></i>点击检索
+                                </button>
+                            </div>
+                        </div> <!-- 检索 -->
+                        <div class="btn-group mb-2 mt-3 col-2" role="group" id="file-advanced-search-container">
+                            <!-- 高级检索 -->
+                            <button type="button" class="btn btn-outline-secondary" data-toggle="modal"
+                                    data-target="#file-manage-tool"><i class="fab fa-searchengin"></i>高级检索配置
+                            </button>
+                        </div> <!-- 高级检索 -->
+                        <div class="dropdown mb-3 col-4 col-sm-2" id="file-sort-container">
+                            <a class="btn btn-outline-secondary dropdown-toggle" href="#" role="button" id="file-sort"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                排序:<span class="sort-checked-text">最近更新</span>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="file-sort">
+                                <span class="checked"><i class="fas fa-check"></i><a class="dropdown-item"
+                                                                                     data-val="0,desc">最近更新</a></span>
+                                <span><i class="fas fa-check"></i><a class="dropdown-item"
+                                                                     data-val="0,asc">最早更新</a></span>
+                                <span><i class="fas fa-check"></i><a class="dropdown-item"
+                                                                     data-val="1,desc">最近创建</a></span>
+                                <span><i class="fas fa-check"></i><a class="dropdown-item"
+                                                                     data-val="1,asc">最早创建</a></span>
+                            </div>
+                        </div> <!-- 排序: 最近(早)创建; 最近(早)更新 -->
+                        <div class="btn-group mb-3 col-4 col-sm-4" role="group" id="file-operate-container">
+                            <button type="button" class="btn btn-outline-secondary" id="file-fetch" disabled><i
+                                    class="fas fa-hand-paper"></i>取回
+                            </button>
+                            <button type="button" class="btn btn-outline-secondary" id="file-download" disabled><i
+                                    class="fas fa-cloud-download-alt"></i>下载
+                            </button>
+                            <button type="button" class="btn btn-outline-secondary" id="file-delete" disabled><i
+                                    class="fas fa-trash-alt"></i>删除
+                            </button>
+                        </div> <!-- 取回, 删除, 下载 -->
+                        <div class="btn-group mb-3 col-4 col-sm-2 offset-sm-4" role="group" id="file-upload-btn">
+                            <button type="button" class="btn btn-outline-secondary"><i
+                                    class="fas fa-cloud-upload-alt"></i>上传视频文件
+                            </button>
+                        </div> <!-- 视频上传 -->
+                    </div>
+                </div>
+                <div id="file-table" class="col-12"> <!-- 数据表格 --></div>
+            </div>
+        </div> <!-- 右侧数据table -->
+    </div>
+</section>
+
+<!-- 高级检索modal -->
+<aside id="file-manage-tool" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="fileManageToolLabel"
+       aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="fileManageToolLabel">高级检索</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body container">
+                <form class="layui-form row" action="">
+                    <div class="layui-form-item col-12" id="file-name"> <!-- 文件名称, 用户自行输入, input: 暂不做输入提示 -->
+                        <div class="row">
+                            <label class="layui-form-label col-3">文件名称</label>
+                            <div class="layui-input-block col-9">
+                                <input type="text" name="fileName" lay-verify="name" autocomplete="off"
+                                       placeholder="请输入文件名称..." class="form-control"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item col-12" id="location-name"> <!-- 摄像头点位, 用户自行输入, input: 暂不做输入提示 -->
+                        <div class="row">
+                            <label class="layui-form-label col-3">摄像头点位</label>
+                            <div class="layui-input-block col-9">
+                                <input type="text" name="locationName" lay-verify="name" autocomplete="off"
+                                       placeholder="请输入摄像头点位信息..." class="form-control"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item col-12" id="time-range"> <!-- 录制时间范围, lay date -->
+                        <div class="row">
+                            <label class="layui-form-label col-3">录制时间</label>
+                            <div class="layui-input-block col-4 pr-0">
+                                <input type="text" class="form-control" id="start-time" placeholder="录制起始时间..."/>
+                            </div>
+                            <span class="col-1 mr-0 p-0" style="text-align:center;line-height:40px;">至</span>
+                            <div class="layui-input-block col-4 pl-0">
+                                <input type="text" class="form-control" id="end-time" placeholder="录制结束时间..."/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item col-12" id="industry">
+                        <div class="row">
+                            <label class="layui-form-label col-3">所属行业</label>
+                            <div class="layui-input-block col-9">
+                                <select name="industry" lay-verify="" lay-search title="industry" lay-filter="industry">
+                                    <option value="">直接选择或搜索选择</option>
+                                </select> <!-- 需要进行初始化选择项以及已经选择的单位 -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item col-12" id="department">
+                        <div class="row">
+                            <label class="layui-form-label col-3">所属单位</label>
+                            <div class="layui-input-block col-9">
+                                <select name="department" lay-verify="" lay-search title="department"
+                                        lay-filter="department">
+                                    <option value="">直接选择或搜索选择</option>
+                                </select> <!-- 需要进行初始化可选择项以及已选择的单位 -->
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary">开始检索</button>
+            </div>
+        </div>
+    </div>
+</aside>
+
+<!-- 编辑/详情aside -->
+<aside id="file-info" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="fileInfoLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content detail"> <!-- 如果是详情此处class有detail, 如果是编辑此处class为edit -->
+            <div class="modal-header">
+                <h5 class="modal-title" id="fileInfoLabel">视频文件信息</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body container">
+                <form id="info-form" class="layui-form row">
+                    <fieldset id="base-info" class="col-12">
+                        <div class="row">
+                            <legend class="col-12">基本信息</legend>
+                            <dl class="col-12 layui-form-item">
+                                <div class="row">
+                                    <dt class="col-3"><label for="file-info-name">文件名称</label></dt>
+                                    <dd class="col-9"><span id="file-info-name">-&nbsp;-</span></dd>
+                                </div>
+                            </dl> <!-- 文件名称信息 -->
+                            <dl class="col-12 layui-form-item">
+                                <div class="row">
+                                    <dt class="col-3"><label for="file-info-industry">行业</label></dt>
+                                    <dd class="col-9"><span id="file-info-industry">-&nbsp;-</span></dd>
+                                </div>
+                            </dl> <!-- 行业下拉菜单/行业名称信息 -->
+                            <dl class="col-12 layui-form-item">
+                                <div class="row">
+                                    <dt class="col-3"><label for="file-info-department">单位</label></dt>
+                                    <dd class="col-9"><span id="file-info-department">-&nbsp;-</span></dd>
+                                </div>
+                            </dl> <!-- 单位下拉菜单/单位信息 -->
+                            <dl class="col-12 layui-form-item">
+                                <div class="row">
+                                    <dt class="col-3"><label for="file-info-location">摄像头点位</label></dt>
+                                    <dd class="col-9"><span id="file-info-location">-&nbsp;-</span></dd>
+                                </div>
+                            </dl> <!-- 摄像头下拉菜单/摄像头点位信息 -->
+                            <dl class="col-12 layui-form-item">
+                                <div class="row">
+                                    <dt class="col-3"><label for="file-info-time">录制时间</label></dt>
+                                    <dd class="col-9"><span id="file-info-time">-&nbsp;-</span></dd>
+                                </div>
+                            </dl> <!-- 文件录制时间 -->
+                            <dl class="col-6 layui-form-item">
+                                <div class="row">
+                                    <dt class="col-6"><label for="file-info-length">视频时长</label></dt>
+                                    <dd class="col-6"><span id="file-info-length">-&nbsp;-</span></dd>
+                                </div>
+                            </dl> <!-- 视频文件时长 -->
+                            <dl class="col-6 layui-form-item">
+                                <div class="row">
+                                    <dt class="col-6"><label for="file-info-size">视频大小</label></dt>
+                                    <dd class="col-6"><span id="file-info-size">-&nbsp;-</span></dd>
+                                </div>
+                            </dl> <!-- 视频文件大小 -->
+                            <dl class="col-6 layui-form-item">
+                                <div class="row">
+                                    <dt class="col-6"><label for="file-info-suffix">视频格式</label></dt>
+                                    <dd class="col-6"><span id="file-info-suffix">-&nbsp;-</span></dd>
+                                </div>
+                            </dl> <!-- 视频文件后缀名 -->
+                            <dl class="col-6 layui-form-item">
+                                <div class="row">
+                                    <dt class="col-6"><label for="file-info-origin">视频文件来源</label></dt>
+                                    <dd class="col-6"><span id="file-info-origin">-&nbsp;-</span></dd>
+                                </div>
+                            </dl> <!-- 视频文件来源 -->
+                        </div>
+                    </fieldset>
+                    <!-- 如果该文件有处理履历, 则在此处显示 -->
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary confirm">确定</button>
+                <button type="button" class="btn btn-secondary cancel">取消</button>
+            </div>
+        </div>
+    </div>
+</aside>
+
+<!-- 下载/批量下载提示信息 -->
+<aside id="file-manage-download-modal" class="modal fade" tabindex="-1" role="dialog"
+       aria-labelledby="fileDownloadLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="fileDownloadLabel">视频文件下载</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" id="file-manage-download-confirm">确认下载</button>
+                <button type="button" class="btn btn-secondary" id="file-manage-download-cancel">取消</button>
+            </div>
+        </div>
+    </div>
+</aside>
+
+<!-- 删除/批量删除提示信息 -->
+<aside id="file-manage-delete-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="fileDeleteLabel"
+       aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="fileDeleteLabel">视频文件删除</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body container">
+                <div style="width:60%;margin:0 auto;">
+                    <div>选中待删除的文件文件包含：</div>
+                    <div style="margin-left:2rem;"><span class="green">已处理文件：</span><span
+                            id="file-handled">-&nbsp;-</span></div>
+                    <div style="margin-left:2rem;"><span class="orange">处理中文件：</span><span
+                            id="file-handling">-&nbsp;-</span></div>
+                    <div style="margin-left:2rem;"><span class="red">未处理文件：</span><span
+                            id="file-for-handle">-&nbsp;-</span></div>
+                    <div>是否确认删除？</div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" id="file-manage-delete-confirm">确认删除</button>
+                <button type="button" class="btn btn-secondary" id="file-manage-delete-cancel">取消</button>
+            </div>
+        </div>
+    </div>
+</aside>
+
+</body>
+<script type="text/javascript" src="component/fileManage/fileManage.js"></script>
+</html>

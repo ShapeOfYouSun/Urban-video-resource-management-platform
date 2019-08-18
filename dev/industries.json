@@ -1,0 +1,19 @@
+{
+  "status": 0,
+  "industries": [{
+    "industryId": "001",
+    "industryName": "公安"
+  }, {
+    "industryId": "002",
+    "industryName": "水务"
+  }, {
+    "industryId": "003",
+    "industryName": "环保"
+  }, {
+    "industryId": "004",
+    "industryName": "教育"
+  }, {
+    "industryId": "005",
+    "industryName": "医疗"
+  }]
+}

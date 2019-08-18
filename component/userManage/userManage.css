@@ -1,0 +1,112 @@
+#fileManage-container .left-container {
+    min-height: 100%;
+    border-right: 1px solid rgba(0, 0, 0, .125);
+}
+
+#fileManage-container .right-container {
+    min-height: 100%;
+}
+
+.tools button {
+    height: 38px;
+}
+
+.tools #file-search-container {
+    margin-bottom: 0 !important;
+}
+
+#file-search-container i,
+#file-advanced-search-container i,
+#file-operate-container i,
+#file-upload-btn i {
+    margin-right: 8px;
+    font-size: 16px;
+}
+
+#file-sort-container .dropdown-menu > span {
+    display: flex;
+    width: 100%;
+    height: 30px;
+    cursor: pointer;
+}
+
+#file-sort-container .dropdown-menu > span:hover {
+    background-color: rgba(0, 0, 0, 0.125);
+}
+
+#file-sort-container .dropdown-menu > span > i {
+    display: inline-block;
+    width: 25%;
+    text-align: right;
+    line-height: 30px;
+}
+
+#file-sort-container .dropdown-menu > span > a {
+    display: inline-block;
+    width: 75%;
+    text-align: left;
+    line-height: 30px;
+    padding: 0;
+    margin-left: 8px;
+}
+
+#file-sort-container .dropdown-menu > span > a:hover {
+    background-color: transparent;
+}
+
+#file-sort-container .dropdown-menu > span > i {
+    visibility: hidden;
+}
+
+#file-sort-container .dropdown-menu > span[class='checked'] > i {
+    visibility: visible;
+}
+
+#fileManage-container .show > .btn-primary.dropdown-toggle {
+    color: #333;
+}
+
+@media (min-width: 576px) {
+    #file-manage-tool .modal-dialog {
+        max-width: 600px;
+        margin: 1.75rem auto;
+    }
+
+    #file-info .modal-dialog {
+        max-width: 600px;
+        margin: 1.75rem auto;
+    }
+}
+
+#file-manage-tool.modal {
+    padding-top: 6%;
+}
+
+#file-info .modal-content.detail .modal-footer button {
+    display: none;
+}
+
+#file-manage-delete-modal.modal {
+    padding-top: 6%;
+}
+
+#file-manage-delete-modal .modal-body > div > div {
+    margin-top: 14px;
+}
+
+#file-manage-delete-modal #file-handled,
+#file-manage-delete-modal #file-handling,
+#file-manage-delete-modal #file-for-handle {
+    margin-left: 20px;
+}
+
+#info-form #record dd label,
+#info-form #record dt span {
+    text-align: center;
+}
+/*.modal-footer{*/
+/*    padding: 0rem 1rem;*/
+/*}*/
+.formation{
+    margin-top: 40px;
+}

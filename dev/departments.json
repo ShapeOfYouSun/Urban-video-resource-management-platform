@@ -1,0 +1,16 @@
+{
+  "status": 0,
+  "departments": [{
+    "departmentId": "0011",
+    "departmentName": "北京XX局"
+  }, {
+    "departmentId": "0012",
+    "departmentName": "天津XX局"
+  }, {
+    "departmentId": "0013",
+    "departmentName": "上海XX局"
+  }, {
+    "departmentId": "0014",
+    "departmentName": "重庆XX局"
+  }]
+}

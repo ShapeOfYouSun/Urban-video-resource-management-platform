@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>视频流管理</title>
+</head>
+<link type="text/css" rel="stylesheet" href="component/fileStream/fileStream.css"/>
+<body>
+<section class="fileStream-wrapper container-fluid" id="fileStream-container">
+    <div class="row">
+        <div class="left-container col-12 col-sm-2"> <!-- 左侧行业 - 单位树形结构 -->
+            <div class="row">
+                <div class="organization-search mt-3 mb-2 col-12">
+                    <input type="search" class="form-control" title="fuzzyValue" placeholder="请输入关键词检索..."/>
+                </div>
+                <div class="organization-by-industry col-12"></div>
+            </div>
+
+        </div>
+        <div class="right-container col-12 col-sm-10"> <!-- 右侧数据table -->
+            <div class="row">
+                <div class="tools col-12"> <!-- 工具栏: 检索, 停用-->
+                    <div class="row">
+                        <div class="input-group mb-3 mt-3 col-8 col-lg-6" id="stream-search-container"> <!-- 视频流通用检索框 -->
+                            <input type="text" class="form-control" placeholder="请输入摄像头点位名称..."
+                                   aria-label="fuzzy-search"/>
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary"><i class="fas fa-search"></i>点击检索</button>
+                            </div>
+                        </div> <!-- 快捷检索 -->
+                        <div class="btn-group mb-3 mt-3 col-4 col-lg-2" role="group" id="stream-advanced-search-container">
+                            <button type="button" class="btn btn-outline-secondary" data-toggle="modal"
+                                    data-target="#stream-manage-tool"><i class="fab fa-searchengin"></i>高级检索
+                            </button>
+                        </div> <!-- 高级检索 -->
+                        <div class="btn-group mb-3 mt-3 col-4 col-lg-2" role="group" id="stream-operate-container">
+                            <button type="button" class="btn btn-outline-secondary" id="stream-stop" disabled><i
+                                    class="far fa-stop-circle"></i>停用
+                            </button>
+                            <button type="button" class="btn btn-outline-secondary" id="stream-start" disabled><i
+                                    class="fas fa-power-off"></i>开启
+                            </button>
+                        </div> <!-- 批量停用 -->
+                        <div class="btn-group mb-3 mt-3 col-4 col-lg-2" role="group" id="stream-add">
+                            <button type="button" class="btn btn-outline-secondary"><i class="fas fa-plus-circle"></i>添加视频流
+                            </button>
+                        </div> <!-- 添加视频流 -->
+                    </div>
+                </div>
+                <div id="stream-table" class="col-12"> <!-- 数据表格 --> </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 视频流高级检索弹出 -->
+<aside id="stream-manage-tool" class="modal fade" tab-index="-1" role="dialog"
+       aria-labelledby="streamAdvancedSearchLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="streamAdvancedSearchLabel">高级检索</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body container">
+                <form class="layui-form row" action="">
+                    <div class="layui-form-item col-12" id="location-name"> <!-- 摄像头点位信息, 用户自行输入, input: 暂不做输入提示 -->
+                        <div class="row">
+                            <label class="layui-form-label col-3">摄像头点位</label>
+                            <div class="layui-input-block col-9">
+                                <input type="text" name="locationName" lay-verify="name" autocomplete="off"
+                                       placeholder="请输入摄像头点位信息..." class="form-control"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item col-12" id="industry">
+                        <div class="row">
+                            <label class="layui-form-label col-3">所属行业</label>
+                            <div class="layui-input-block col-9">
+                                <select name="indsutry" lay-verify="" lay-search title="industry" lay-filter="industry">
+                                    <option value="">直接选择或搜索选择</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item col-12" id="department">
+                        <div class="row">
+                            <label class="layui-form-label col-3">所属单位</label>
+                            <div class="layui-input-block col-9">
+                                <select name="department" lay-verify="" lay-search title="department"
+                                        lay-filter="department">
+                                    <option value="">直接选择或搜索选择</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item col-12" id="stream-state">
+                        <div class="row">
+                            <label class="layui-form-label col-3">视频流状态</label>
+                            <div class="col-9">
+                                <select name="state" lay-verify="" title="industry" lay-filter="streamState">
+                                    <option value="">全部</option>
+                                    <option value="0">停用</option>
+                                    <option value="1">在线</option>
+                                    <option value="2">离线</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary">开始检索</button>
+            </div>
+        </div>
+    </div>
+</aside>
+
+<!-- 视频流编辑/详情modal -->
+<aside id="stream-info" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="streamInfoLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content detail">
+            <div class="modal-header">
+                <h5 class="modal-title" id="streamInfoLabel">视频流信息</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body container">
+                <form id="stream-info-form" class="layui-form row">
+                    <!-- 基本信息 -->
+                    <fieldset id="stream-base-info" class="col-12">
+                        <div class="row">
+                            <legend class="col-12">基本信息</legend>
+                            <dl class="col-12 layui-form-item">
+                                <div class="row">
+                                    <dt class="col-3"><label for="stream-location">视频流地址</label></dt>
+                                    <dd class="col-9"><span id="stream-location">-&nbsp;-</span></dd>
+                                </div>
+                            </dl> <!-- 视频流地址 -->
+                            <dl class="col-12 layui-form-item">
+                                <div class="row">
+                                    <dt class="col-3"><label for="stream-equipment">所属设备</label></dt>
+                                    <dd class="col-9"><span id="stream-equipment">-&nbsp;-</span></dd>
+                                </div>
+                            </dl> <!-- 所属设备 -->
+                        </div>
+                    </fieldset>
+                    <!-- 录制配置 -->
+                    <fieldset id="stream-config" class="col-12">
+                        <hr/>
+                        <div class="row">
+                            <legend class="col-12">录制配置</legend>
+                            <dl class="col-12 layui-form-item">
+                                <div class="row">
+                                    <dt class="col-3"><label for="stream-record-switch">是否录制</label></dt>
+                                    <dd class="col-9"><span id="stream-record-switch">-&nbsp;-</span></dd>
+                                </div>
+                            </dl> <!-- 是否录制视频流 -->
+                            <dl class="col-12 layui-form-item">
+                                <div class="row">
+                                    <dt class="col-3"><label for="stream-archive-plan">归档计划</label></dt>
+                                    <dd class="col-9"><span id="stream-archive-plan">-&nbsp;-</span></dd>
+                                </div>
+                            </dl> <!-- 归档计划 -->
+                        </div>
+                    </fieldset>
+                    <!-- 权限信息 -->
+                    <fieldset id="stream-department-permission" class="col-12">
+                        <hr/>
+                        <div class="row">
+                            <legend class="col-12">权限信息</legend>
+                            <dl class="col-12 layui-form-item">
+                                <div class="row">
+                                    <dt class="col-3"><label for="stream-visual">权限可见</label></dt>
+                                    <dd class="col-9"><span id="stream-visual">-&nbsp;-</span></dd>
+                                </div>
+                            </dl> <!-- 视频流可见 -->
+                            <dl class="col-12 layui-form-item">
+                                <div class="row">
+                                    <dt class="col-3"><label for="stream-check">权限可查看</label></dt>
+                                    <dd class="col-9"><span id="stream-check">-&nbsp;-</span></dd>
+                                </div>
+                            </dl> <!-- 视频流可查看 -->
+                            <dl class="col-12 layui-form-item">
+                                <div class="row">
+                                    <dt class="col-3"><label for="stream-edit">权限可编辑</label></dt>
+                                    <dd class="col-9"><span id="stream-edit">-&nbsp;-</span></dd>
+                                </div>
+                            </dl> <!-- 视频流可编辑 -->
+                        </div>
+                    </fieldset>
+                    <!-- 处理履历: 如果有处理履历的话, 显示在此处, 否则不显示 -->
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary confirm">确定</button>
+                <button type="button" class="btn btn-secondary cancel">取消</button>
+            </div>
+        </div>
+    </div>
+</aside>
+
+<!-- 添加视频流 -->
+<aside id="stream-add-aside" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="streamAddsAsideLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content single">
+            <div class="modal-header">
+                <h5 class="modal-title" id="streamAddLabel">视频流添加</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#streamSingleAdd" data-toggle="tab" role="tab" aria-controls="streamSingleAdd" aria-selected="true">单个视频流添加</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#streamMultipleAdd" data-toggle="tab" role="tab" aria-controls="streamMultipleAdd" aria-selected="false">批量视频流添加</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane fade show container active" id="streamSingleAdd" role="tabpanel" aria-labelledby="streamSingleAdd-tab">
+                        <form class="layui-form row" action>
+                            <div class="layui-form-item col-12 mt-4">
+                                <div class="row" id="single-stream-add-path">
+                                    <label class="layui-form-label col-3">视频流地址</label>
+                                    <div class="col-9">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">rtsp</span>
+                                                <!--<div class="layui-input-block">-->
+                                                    <!--<select name="type" lay-verify title="type" lay-filter="type">-->
+                                                        <!--<option value="0">rtsp</option>-->
+                                                        <!--<option value="1">国标流</option>-->
+                                                    <!--</select>-->
+                                                <!--</div>-->
+                                            </div>
+                                            <input id="streamSingleAddPath" type="text" class="form-control" autocomplete="off" placeholder="请输入视频流地址，如：rtsp://...">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-form-item col-12 mb-3">
+                                <div class="row" id="single-stream-add-location">
+                                    <label class="layui-form-label col-3">所属设备</label>
+                                    <div class="col-9">
+                                        <div class="layui-input-block">
+                                            <select name="singleStreamAddLocation" lay-verify lay-search title="singleStreamAddLocation" lay-filter="singleStreamAddLocation">
+                                                <option value="">直接选择或搜索选择</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-form-item col-12">
+                                <div class="row" id="single-stream-add-test">
+                                    <label class="layui-form-label col-3">链接测试</label>
+                                    <div class="col-3">
+                                        <button id="singleStreamAddTest" class="btn btn-outline-secondary">点击测试</button>
+                                    </div>
+                                    <div class="validation col-3" style="font-size:1.1rem;line-height:2.375rem;">
+                                        <div class="valid" style="color:green;display:none"><i class="far fa-check-circle"></i>&nbsp;连接成功</div>
+                                        <div class="invalid" style="color:red;display:none"><i class="far fa-times-circle"></i>&nbsp;连接失败</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="tab-pane fade" id="streamMultipleAdd" role="tabpanel" aria-labelledby="streamMultipleAdd-tab">批量视频流添加</div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary confirm">确定</button>
+                <button type="button" class="btn btn-secondary cancel">取消</button>
+            </div>
+        </div>
+    </div>
+</aside>
+
+</body>
+<script type="text/javascript" src="component/fileStream/fileStream.js"></script>
+</html>

@@ -1,0 +1,22 @@
+{
+  "status": 0,
+  "data": {
+    "videoFlowId": "xxx",
+    "path": "rtsp://admin:12345@192.0.0.64:554/h264/ch1/main/av_stream",
+    "type": "0",
+    "equipmentId": "xxx",
+    "equipmentName": "北京市东城区北京市东城区委党校-东向西-1",
+    "ifRecord": "1",
+    "originStoreStrategy": "1",
+    "authorityInfo": {
+      "editable": [{"orgId": "100", "orgName": "机构1"},
+        {"orgId": "200", "orgName": "机构2"}],
+      "useable": [{"orgId": "200", "orgName": "机构2"},
+        {"orgId": "300", "orgName": "机构3"}],
+      "visible": [{"orgId": "200", "orgName": "机构2"},
+        {"orgId": "300", "orgName": "机构4"}]
+    },
+    "record": [{"disposeName": "交通-简单事件检测", "disposeTime": "2019-7-23 10:14:00"},
+      {"disposeName": "交通-简单事件检测", "disposeTime": "2019-7-23 10:14:00"}]
+  }
+}

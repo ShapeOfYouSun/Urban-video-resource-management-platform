@@ -1,0 +1,128 @@
+#login-container {
+    background-image: url(../../static/image/bg.jpg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    flex-grow: 1;
+}
+
+#login-container #login-main-logo {
+    position: absolute;
+    margin: auto 0;
+    top: 47%;
+    left: 15%;
+    transform: translate(0, -50%);
+}
+
+#login-container #login-main-content {
+    position: absolute;
+    margin: auto 0;
+    top: 47%;
+    right: 15%;
+    transform: translate(0, -50%);
+    width: auto;
+    height: auto;
+}
+
+#login-container #login-main-content form {
+    width: 335px;
+    height: auto;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 35px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+form #login-form-title {
+    display: block;
+    font-size: 1.5rem;
+}
+
+form #login-username {
+    display: block;
+    margin-top: 30px;
+    box-sizing: border-box;
+    width: 100%;
+    height: 40px;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+form #login-username:hover,
+form #login-password:hover {
+    border: 1px solid #1c8dfa;
+    box-shadow: 1px 1px 3px rgba(12, 163, 206, 0.4), -1px -1px 3px rgba(12, 163, 206, 0.4);
+}
+
+form #login-username[class~="invalid"]:hover,
+form #login-password[class~="invalid"]:hover {
+
+}
+
+form #login-username .icon-container,
+form #login-password .icon-container {
+    display: inline-block;
+    box-sizing: border-box;
+    height: 100%;
+    width: 40px;
+    text-align: center;
+    line-height: 40px;
+    float: left;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+form #login-username input {
+    display: inline-block;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    height: 100%;
+    width: 223px;
+    float: left;
+    background-color: transparent;
+}
+
+form #login-password input {
+    display: inline-block;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    height: 100%;
+    width: 183px;
+    float: left;
+    background-color: transparent;
+}
+
+form #login-username .invalid-feedback,
+form #login-password .invalid-feedback {
+    float: right;
+}
+
+form #login-password {
+    display: block;
+    margin-top: 30px;
+    box-sizing: border-box;
+    width: 100%;
+    height: 40px;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+form #login-password #password-viewer {
+    cursor: pointer;
+}
+
+form #login-password #password-viewer:hover {
+    background-color: #22a9ff;
+}
+
+form button[type="submit"] {
+    display: block;
+    margin-top: 30px;
+    box-sizing: border-box;
+    width: 100%;
+    height: 40px;
+    border-radius: 0;
+}
+
+#login-container .invalid .invalid-feedback {
+    display: inline-block;
+}

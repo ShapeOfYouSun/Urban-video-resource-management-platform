@@ -1,0 +1,87 @@
+{
+  "status": 0,
+  "data": {
+    "counts": 3,
+    "organizationByIndustry": [{
+      "id": "ASDIWNL230ASDL",
+      "name": "水务",
+      "children": [{
+        "id": "23RWEASDFG4WERAD",
+        "name": "北京水务",
+        "children": [{
+          "id": "QWEASDXZC32QEFSD",
+          "name": "朝阳区水务"
+        }]
+      }, {
+        "id": "U56YHGB43WTRDF32REW",
+        "name": "天津水务",
+        "children": [{
+          "id": "4325REFSD4U5YHGF",
+          "name": "南开区水务"
+        }]
+      }]
+    }, {
+      "id": "123REWASDF6YRT",
+      "name": "环保",
+      "children": [{
+        "id": "635YREGDF23WQERS",
+        "name": "北京环保",
+        "children": [{
+          "id": "67RJHDGF3QWREA",
+          "name": "朝阳区环保"
+        }]
+      }, {
+        "id": "U6RTHDFWQREDF3WRE",
+        "name": "天津环保",
+        "children": [{
+          "id": "43TERAD65URET23QREW",
+          "name": "南开区环保"
+        }, {
+          "id": "435YWETrhgb2QWasd0",
+          "name": "津南区环保0"
+        }, {
+          "id": "435YWETrhgb2QWasd1",
+          "name": "津南区环保1"
+        }, {
+          "id": "435YWETrhgb2QWasd2",
+          "name": "津南区环保2"
+        }, {
+          "id": "435YWETrhgb2QWasd3",
+          "name": "津南区环保3"
+        }, {
+          "id": "435YWETrhgb2QWasd4",
+          "name": "津南区环保4"
+        }, {
+          "id": "435YWETrhgb2QWasd5",
+          "name": "津南区环保5"
+        }, {
+          "id": "435YWETrhgb2QWasd6",
+          "name": "津南区环保6"
+        }, {
+          "id": "435YWETrhgb2QWasd",
+          "name": "津南区环保"
+        }, {
+          "id": "435YWETrhgb2QWasd",
+          "name": "津南区环保"
+        }, {
+          "id": "435YWETrhgb2QWasd7",
+          "name": "津南区环保7"
+        }, {
+          "id": "435YWETrhgb2QWasd8",
+          "name": "津南区环保8"
+        }]
+      }]
+    }, {
+      "id": "ytrdgf3rqew23rewfdv",
+      "name": "公安",
+      "children": [{
+          "id": "ewqrdsu6yhtdgfSTHDGFB",
+        "name": "北京公安",
+        "children": [{
+          "id": "Q4TRFSDAG34QW",
+          "name": "朝阳区公安"
+        }]
+      }]
+    }]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "status": 0,
+  "data": {
+    "videoFileInfo": {
+      "departmentId": "QWEASDXZC32QEFSD",
+      "departmentName": "朝阳区水务",
+      "industryId": "ASDIWNL230ASDL",
+      "industryName": "水务",
+      "equipmentId": "00113",
+      "location": "津南区公安局西南角-上",
+      "format": "mp4",
+      "recordTime": "2019-07-20 12:00:04",
+      "resource": "2",
+      "size": "235.2",
+      "videoId": "Q5930OS301LRP95DKP2",
+      "videoLength": 450,
+      "videoName": "视频文件名称007",
+      "status": "1"
+    }
+  }
+}

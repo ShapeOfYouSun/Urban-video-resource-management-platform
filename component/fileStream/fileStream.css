@@ -1,0 +1,58 @@
+#fileStream-container .left-container {
+    min-height: 100%;
+    border-right: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+#fileStream-container i {
+    margin-right: 8px;
+    font-size: 16px;
+}
+
+#stream-manage-tool.modal,
+#stream-add-aside.modal {
+    padding-top: 6%;
+}
+
+#stream-dispose dt label,
+#stream-dispose dd span {
+    text-align: center;
+}
+
+#stream-location .layui-input-block .layui-select-title input,
+#streamSingleAdd #single-stream-add-path .layui-input-block .layui-select-title input {
+    width: 100px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+#stream-info #stream-record-switch span[data-switch="0"] .radio {
+    display: inline-block;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    height: 18px;
+    width: 18px;
+    border-radius: 10px;
+    padding: 2px;
+    border: 2px solid rgba(0, 0, 0, 0.8);
+    cursor: pointer;
+}
+
+#stream-info #stream-record-switch span[data-switch="1"] .radio {
+    display: inline-block;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    height: 18px;
+    width: 18px;
+    border-radius: 10px;
+    padding: 2px;
+    border: 2px solid rgba(0, 0, 0, 0.8);
+    background-color: #1c8dfa;
+    background-clip: content-box;
+    cursor: pointer;
+}
+
+#stream-add-aside .modal-body a.nav-link.active {
+    background: linear-gradient(#dee2e6,#fff)
+}

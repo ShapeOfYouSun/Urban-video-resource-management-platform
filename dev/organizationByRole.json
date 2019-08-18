@@ -1,0 +1,18 @@
+{
+  "status": 0,
+  "data": {
+    "counts": 3,
+    "organizationByIndustry": [{
+        "id": "ASDIWNL230ASDL",
+        "name": "运营人员"
+      },
+      {
+        "id": "123REWASDF6YRT",
+        "name": "机构管理员"
+      },
+      {
+        "id": "ytrdgf3rqew23rewfdv",
+        "name": "平台管理员"
+      }]
+    }
+  }
